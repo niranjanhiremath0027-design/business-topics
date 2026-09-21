@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Topics</title>
+<style>
+  :root{--bg:#0A0E16;--ink:#EDEFF5;--dim:#9AA3B8;--steel:#4C6FE0;--gold:#D8A94C;--line:rgba(237,239,245,.12)}
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(900px 600px at 80% 0%,rgba(76,111,224,.18),transparent 60%),var(--bg);
+    color:var(--ink);font-family:ui-sans-serif,system-ui,sans-serif;line-height:1.6}
+  h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(2.4rem,6vw,4rem);margin:0}
+  h2{font-family:Georgia,serif;font-weight:400;font-size:1.6rem;margin:0 0 6px}
+  .wrap{width:min(900px,92vw);margin:0 auto;padding:60px 0}
+  p{color:var(--dim);max-width:56ch}
+
+  .hero{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+  @media(max-width:700px){.hero{grid-template-columns:1fr}}
+  .btn{display:inline-block;margin-top:20px;padding:10px 18px;border-radius:999px;background:var(--gold);
+    color:#241a04;font-weight:600;text-decoration:none}
+
+  .scene{perspective:900px;height:220px;display:grid;place-items:center;cursor:grab}
+  .stack{position:relative;width:200px;height:130px;transform-style:preserve-3d;animation:spin 16s linear infinite}
+  @keyframes spin{to{transform:rotateY(360deg)}}
+  .plate{position:absolute;inset:0;border-radius:10px;border:1px solid rgba(237,239,245,.25);
+    background:linear-gradient(150deg,rgba(76,111,224,.28),rgba(216,169,76,.14));
+    display:grid;place-items:center;font-family:Georgia,serif;font-size:.95rem}
+  .p1{transform:translateZ(26px)} .p2{transform:translateZ(0)}
+  .p3{transform:translateZ(-26px)} .p4{transform:translateZ(-52px)}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-top:30px}
+  .card{border:1px solid var(--line);border-radius:12px;padding:16px;transition:transform .3s}
+  .card:hover{transform:translateY(-6px);border-color:var(--gold)}
+  .card b{color:var(--steel);font-size:.75rem;text-transform:uppercase;letter-spacing:.06em}
+  .card h3{font-family:Georgia,serif;font-weight:400;font-size:1rem;margin:6px 0}
+  .card span{color:var(--dim);font-size:.85rem}
+
+  .flips{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:30px;perspective:900px}
+  .flip{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer;text-align:left}
+  .fin{position:relative;height:110px;transform-style:preserve-3d;transition:transform .7s ease}
+  .flip:hover .fin{transform:rotateY(180deg)}
+  .fc{position:absolute;inset:0;backface-visibility:hidden;border:1px solid var(--line);border-radius:10px;
+    padding:14px;display:flex;align-items:flex-end}
+  .fc.f{background:rgba(76,111,224,.14)}
+  .fc.b{transform:rotateY(180deg);background:rgba(216,169,76,.18)}
+  .fc span{font-size:.8rem;color:var(--dim)}
+
+  footer{color:#5f6d88;font-size:.8rem;padding:20px 0;text-align:center}
+</style>
+</head>
+<body>
+
+<div class="wrap hero">
+  <div>
+    <h1>Business Topics</h1>
+    <p>A fast reference across strategy, finance, marketing, and operations.</p>
+    <a class="btn" href="#topics">Browse ↓</a>
+  </div>
+  <div class="scene" id="scene">
+    <div class="stack" id="stack">
+      <div class="plate p1">Strategy</div>
+      <div class="plate p2">Finance</div>
+      <div class="plate p3">Marketing</div>
+      <div class="plate p4">Ops</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap" id="topics">
+  <h2>Core topics</h2>
+  <p>Six areas worth knowing.</p>
+  <div class="grid">
+    <div class="card"><b>Strategy</b><h3>Positioning</h3><span>Where to compete, and what not to do.</span></div>
+    <div class="card"><b>Finance</b><h3>Cash vs. profit</h3><span>Why profitable firms still run dry.</span></div>
+    <div class="card"><b>Marketing</b><h3>Acquisition cost</h3><span>Must stay below lifetime value.</span></div>
+    <div class="card"><b>Operations</b><h3>Supply chain</h3><span>Lean vs. resilient.</span></div>
+    <div class="card"><b>Leadership</b><h3>Delegation</h3><span>Why scale stalls without trust.</span></div>
+    <div class="card"><b>Growth</b><h3>Unit economics</h3><span>Profit per unit, before scale.</span></div>
+  </div>
+
+  <h2 style="margin-top:40px">Frameworks</h2>
+  <p>Hover to flip.</p>
+  <div class="flips">
+    <button class="flip"><div class="fin">
+      <div class="fc f"><b>SWOT</b></div><div class="fc b"><span>Strengths, weaknesses, opportunities, threats.</span></div>
+    </div></button>
+    <button class="flip"><div class="fin">
+      <div class="fc f"><b>Five Forces</b></div><div class="fc b"><span>Judges how attractive an industry is.</span></div>
+    </div></button>
+    <button class="flip"><div class="fin">
+      <div class="fc f"><b>BCG Matrix</b></div><div class="fc b"><span>Fund, hold, or wind down a product.</span></div>
+    </div></button>
+    <button class="flip"><div class="fin">
+      <div class="fc f"><b>OKRs</b></div><div class="fc b"><span>Aligns teams around quarterly goals.</span></div>
+    </div></button>
+  </div>
+</div>
+
+<footer>Quick reference — not financial or legal advice</footer>
+
+<script>
+  var scene=document.getElementById('scene'),stack=document.getElementById('stack'),on=false,sx=0,ry=0,by=0;
+  scene.addEventListener('mousedown',function(e){on=true;stack.style.animation='none';sx=e.clientX;by=ry;});
+  addEventListener('mousemove',function(e){if(!on)return;ry=by+(e.clientX-sx)*.6;stack.style.transform='rotateY('+ry+'deg)';});
+  addEventListener('mouseup',function(){on=false;});
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Business Topics — Insights Hub</title>
+<style>
+  :root{
+    --night:#0A0E16; --night-2:#0F1524; --ivory:#EDEFF5; --dim:#9AA3B8;
+    --steel:#4C6FE0; --gold:#D8A94C; --line:rgba(237,239,245,.11);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;color:var(--ivory);font-family:var(--sans);font-size:17px;line-height:1.65;
+    background:radial-gradient(1000px 620px at 82% 0%,rgba(76,111,224,.18),transparent 60%),
